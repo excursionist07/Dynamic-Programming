@@ -45,3 +45,8 @@ int main()
   return 0;
 
 }
+
+/*
+https://www.codechef.com/problems/MIXTURES
+https://www.spoj.com/problems/MIXTURES/
+*.
