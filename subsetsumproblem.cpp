@@ -52,3 +52,11 @@ int main()
     return 0;
 
 }
+
+/*
+https://www.hackerrank.com/challenges/subset-sum/problem
+https://www.codechef.com/problems/TF01
+https://www.codechef.com/problems/REN2013D
+https://www.hackerearth.com/problem/algorithm/subset-sum-2/
+https://www.hackerearth.com/problem/algorithm/print-subset-sum-to-k/
+*/
