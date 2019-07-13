@@ -47,3 +47,7 @@ int main()
 
   return 0;
 }
+
+/*
+https://practice.geeksforgeeks.org/problems/rod-cutting/0
+*/
