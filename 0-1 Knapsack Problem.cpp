@@ -48,6 +48,7 @@ int main()
 }
 
 /*
+https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem/0
 https://www.hackerearth.com/problem/algorithm/lks-large-knapsack/
 https://www.hackerearth.com/problem/algorithm/knapsack-1/
 https://www.codechef.com/problems/KNPSK
