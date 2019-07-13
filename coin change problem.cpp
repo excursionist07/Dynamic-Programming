@@ -57,3 +57,10 @@ int main()
 	return 0;
 
 }
+
+/*
+https://codeforces.com/problemset/problem/433/A
+https://www.spoj.com/problems/EINST/
+https://www.spoj.com/problems/COINS/
+https://www.spoj.com/problems/TPC07/
+*/
