@@ -51,3 +51,13 @@ int main()
  return 0;
 
 }
+
+/*
+https://www.hackerrank.com/contests/cse-830-homework-3/challenges/edit-distance/submissions/
+https://www.spoj.com/problems/EDIST/
+https://codeforces.com/problemset/problem/531/G
+https://www.codechef.com/MARCH16/problems/SEATSTR2
+https://www.codechef.com/OCT14/problems/SEATSR
+https://www.codechef.com/problems/IOPC17E
+https://codeforces.com/problemset/problem/530/G
+*/
