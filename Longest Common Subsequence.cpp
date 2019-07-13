@@ -101,4 +101,11 @@ int main()
 
 /*
 https://www.codechef.com/CORD2019/problems/CR194
+https://www.hackerrank.com/challenges/dynamic-programming-classics-the-longest-common-subsequence/problem
+https://www.hackerrank.com/challenges/tutzki-and-lcs/problem
+https://www.codechef.com/problems/CHEFKLCS
+https://www.hackerearth.com/problem/algorithm/mancunian-and-k-ordered-lcs-e6a4b8c6/
+https://codeforces.com/problemset/problem/346/B
+http://codeforces.com/problemset/gymProblem/101262/B
+*/
 */
