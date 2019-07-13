@@ -46,3 +46,11 @@ int main()
   cout<<knapsack(wt,val,n,W)<<endl;
   return 0;
 }
+
+/*
+https://www.hackerearth.com/problem/algorithm/lks-large-knapsack/
+https://www.hackerearth.com/problem/algorithm/knapsack-1/
+https://www.codechef.com/problems/KNPSK
+http://codeforces.com/problemset/gymProblem/101064/L
+https://codeforces.com/problemset/problem/19/B
+*/
