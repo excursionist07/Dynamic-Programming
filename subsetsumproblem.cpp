@@ -54,6 +54,7 @@ int main()
 }
 
 /*
+https://practice.geeksforgeeks.org/problems/subset-sum-problem/0
 https://www.hackerrank.com/challenges/subset-sum/problem
 https://www.codechef.com/problems/TF01
 https://www.codechef.com/problems/REN2013D
