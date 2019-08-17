@@ -25,26 +25,7 @@ void lcs(string s1,string s2,ll m,ll n)
 		}
 	}
 
-	/*string s3="";
-	//ll s3.length()=index;
-
-	ll i=m,j=n;
-	while(i>0 && j>0)
-    {
-        if(s1[i-1]==s2[j-1])
-        {
-
-         strcpy(s3,s1[i]);
-         i--;
-         j--;
-
-        }
-        else if(k[i-1][j]>k[i][j-1])
-           i--;
-        else
-           j--;
-    }
-    return s3;*/
+	
     if(k[m][n]!=0)
     {
     ll index=k[m][n];
