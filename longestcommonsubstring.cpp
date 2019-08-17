@@ -14,52 +14,54 @@ using namespace std;
 typedef long long int ll;
 ll HRX=1e18;
 ll INF=1e9+7;
-vector<pair<ll,pair<ll,ll>>>vec;
 
-void lcsubstring(string s1,string s2,ll m,ll n)
+
+void lcs(string s1,string s2)
 {
+ ll m=s1.length();
+ ll n=s2.length();
+ ll maxx=0,row,col;
  ll k[m+1][n+1];
- ll maxx=0;
  f(m+1)
  {
   r(n+1)
   {
-    if(i==0 || j==0)
-      k[i][j]=0;
-    else if(s1[i-1]==s2[j-1])
+   if(i==0 || j==0)
+    k[i][j]=0;
+   else if(s1[i-1]==s2[j-1])
+   {
+    k[i][j]=1+k[i-1][j-1];
+    if(k[i][j]>maxx)
     {
-     k[i][j]=k[i-1][j-1]+1;
-     maxx=max(maxx,k[i][j]);
-     vec.pb(m_p(maxx,m_p(i,j)));
+      maxx=k[i][j];
+      row=i;
+      col=j;
     }
-
+   }
     else
-      k[i][j]=0;
+    k[i][j]=0;
   }
  }
- sort(vec.begin(),vec.end());
- ll xx=vec[vec.size()-1].second.first;
- ll yy=vec[vec.size()-1].second.second;
- ll ans=vec[vec.size()-1].first;
- //cout<<ans<<" "<<xx<<" "<<yy;
- ll index=ans;
- char ch[index];
 
- while(k[xx][yy]!=0)
+ ll zz=maxx;
+ char ch[zz];
+ while(k[row][col]!=0)
  {
-  if(s1[xx-1]==s2[yy-1])
-  {
-    ch[index-1]=s1[xx-1];
-    xx--;
-    yy--;
-    index--;
+   if(s1[row-1]==s2[col-1])
+   {
+    ch[--zz]=s1[row-1];
+    row--;
+    col--;
+   }
 
-  }
  }
- cout<<ans<<endl;
- for(ll i=0;i<ans;i++)
-    cout<<ch[i];
- cout<<"\n";
+ string str="";
+ f(maxx)
+ {
+  str=str+ch[i];
+ }
+ cout<<str<<endl;
+
 
 
 }
@@ -70,11 +72,11 @@ int main()
  cin>>t;
  f(t)
  {
+
   string s1,s2;
   cin>>s1>>s2;
-  ll m=s1.length();
-  ll n=s2.length();
-  lcsubstring(s1,s2,m,n);
+  lcs(s1,s2);
+
  }
  return 0;
 }
