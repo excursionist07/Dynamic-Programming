@@ -30,7 +30,6 @@ void lcs(string s1,string s2,ll m,ll n)
     {
     ll index=k[m][n];
     char ch[index];
-    //ch[index]=' ';
     ll i=m,j=n;
     while(i>0 && j>0)
     {
