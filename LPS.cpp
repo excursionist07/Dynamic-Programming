@@ -73,3 +73,20 @@ int main()
  }
  return 0;
 }
+
+/*
+https://practice.geeksforgeeks.org/problems/longest-palindrome-in-a-string/0
+https://www.spoj.com/problems/LPS/
+https://www.spoj.com/AU1/problems/LPALIN/
+https://www.spoj.com/problems/PALIM/
+https://www.hackerrank.com/contests/security-challenge/challenges/largest-palindromic-substring
+https://www.hackerrank.com/contests/codejam/challenges/longest-palindrome
+https://www.hackerrank.com/contests/daiict-ipc-4/challenges/counting-palindromic-substring
+https://www.hackerearth.com/practice/algorithms/dynamic-programming/2-dimensional/practice-problems/algorithm/palindromic-sub-string-length/
+https://www.hackerearth.com/problem/golf/mrwatson-and-super-logarithms/
+https://www.hackerearth.com/practice/algorithms/string-algorithm/manachars-algorithm/practice-problems/algorithm/longest-palindromic-string/
+https://codeforces.com/problemset/problem/202/A
+https://codeforces.com/problemset/problem/981/A
+https://www.codechef.com/ACM15AMR/problems/AMLPALIN
+https://www.codechef.com/MARCH16/problems/STRPALIN
+*/
