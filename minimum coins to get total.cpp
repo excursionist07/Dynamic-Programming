@@ -23,7 +23,7 @@ void minncoins(ll coins[],ll total,ll n)
   if(i%coins[0]==0)
     k[0][i]=i/coins[0];
   else
-    k[0][i]=0;
+    k[0][i]=HRX;
  }
  for(ll i=1;i<n;i++)
  {
@@ -38,7 +38,10 @@ void minncoins(ll coins[],ll total,ll n)
 
   }
  }
- cout<<k[n-1][total]<<endl;
+ if(k[n-1][total]==HRX)
+   cout<<"-1"<<endl;
+ else
+   cout<<k[n-1][total]<<endl;
 }
 
 int main()
