@@ -48,6 +48,7 @@ int main()
       {
         b[j]=min(b[j],b[i]+1);
         c[j]=i;
+        break;
 
       }
     }
