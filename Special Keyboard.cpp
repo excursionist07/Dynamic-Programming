@@ -15,7 +15,7 @@ typedef long long int ll;
 ll HRX=1e18;
 ll INF=1e9+7;
 
-const ll N=76;
+const ll N=1001;
 ll dp[N];
 void keyboard()
 {
@@ -38,10 +38,7 @@ int main()
  {
   ll n;
   cin>>n;
-  if(n>75)
-    cout<<"-1"<<endl;
-  else
-    cout<<dp[n]<<endl;
+  cout<<dp[n]<<endl;
  }
  return 0;
 }
