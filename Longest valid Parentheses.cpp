@@ -28,7 +28,7 @@ int main()
   ll maxx=0;
   stack<char>stk;
   stk.push(-1);
-  f(n)
+  f(n)//O(n)
   {
    if(str[i]=='(')
      stk.push(i);
@@ -45,3 +45,5 @@ int main()
  }
  return 0;
 }
+
+// Brute force is generate all substrings in O(n*n) and chec in O(n),overall O(n*n)
