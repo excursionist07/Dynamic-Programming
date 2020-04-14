@@ -15,6 +15,32 @@ typedef long long int ll;
 ll HRX=1e18;
 ll INF=1e9+7;
 
+//O(n)
+int jump(vector<int>& nums) 
+    {
+     int n=nums.size();
+     if(n==0 || n==1)
+         return 0;
+     int maxreach=nums[0];
+     int steps=nums[0];
+     int jumps=1;
+     for(int i=1;i<n;i++)
+     {
+       if(i==n-1)
+           return jumps;
+       maxreach=max(maxreach,i+nums[i]);
+       steps--;
+       if(steps==0)
+       {
+        jumps++;
+        if(i>=maxreach)
+            return -1;
+         steps=maxreach-i;
+       }
+     }
+        return -1;
+    }
+
 int main()
 {
  hs;
