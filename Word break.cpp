@@ -35,7 +35,7 @@ unordered_map<string,bool>mp;
  return false;
 }
 */
-bool doit1(string str)
+bool doit1(string str)//O(str.size()^2))
 {
  ll n=str.length();
  if(n==0)
