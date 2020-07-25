@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    int lps(string s1,string s2,int n)
+    int lps(string s1,string s2,int n) // Just Reverse the string and take LCS with it
     {
      int dp[n+1][n+1];
      for(int i=0;i<=n;i++)
