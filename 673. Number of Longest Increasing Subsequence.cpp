@@ -2,11 +2,11 @@ class Solution {
 public:
 
     /*
-    The idea is to use two arrays len[n] and cnt[n] to record the maximum length of Increasing Subsequence and the coresponding number of these sequence which ends with nums[i], respectively. That is:
-
-len[i]: the length of the Longest Increasing Subsequence which ends with nums[i].
-cnt[i]: the number of the Longest Increasing Subsequence which ends with nums[i].
-*/
+    The idea is to use two arrays len[n] and cnt[n] to record the maximum length of Increasing Subsequence and the coresponding number of these sequence which ends with nums[i], respectively. 
+    That is:
+      len[i]: the length of the Longest Increasing Subsequence which ends with nums[i].
+      cnt[i]: the number of the Longest Increasing Subsequence which ends with nums[i].
+   */
     int findNumberOfLIS(vector<int>& nums)
     {
      int n=nums.size();
