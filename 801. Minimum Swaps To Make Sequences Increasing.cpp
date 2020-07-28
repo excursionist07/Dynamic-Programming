@@ -43,4 +43,23 @@ In this case, if we want to keep A and B increasing before the index i, can only
      }
      return min(swap[n-1],notswap[n-1]);
     }
+    
+   /* int swap=1,not_swap=0;
+     for(int i=1;i<n;i++)//O(1) space
+     {
+      int swap2=n,not_swap2=n;
+      if(A[i]>A[i-1] && B[i]>B[i-1])
+      {
+       not_swap2=not_swap;
+       swap2=swap+1;
+      }
+      if(A[i]>B[i-1] && B[i]>A[i-1])
+      {
+        not_swap2=min(not_swap2,swap);
+        swap2=min(swap2,not_swap+1);
+      }
+      swap=swap2;
+      not_swap=not_swap2;
+     }
+     return min(swap,not_swap);*/
 };
