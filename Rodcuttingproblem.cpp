@@ -9,7 +9,7 @@
 using namespace std;
 typedef long long int ll;
 
-ll rodcutting(ll L[],ll cost[],ll n,ll len)
+ll rodcutting(ll L[],ll cost[],ll n,ll len)// Same as unbounded knapsack
 {
   ll k[n+1][len+1];
   for(ll i=0;i<=n;i++)
