@@ -37,7 +37,8 @@ void palindromic(string s)
   {
    for(ll i=0;i<n-k+1;i++)
    {
-    ll j=i+k-1;
+    ll j=i+k-1; // Get the ending index of substring starting index i and length k 
+           
     if(vis[i+1][j-1] && s[i]==s[j])
     {
       vis[i][j]=1;
