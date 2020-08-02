@@ -15,7 +15,7 @@ typedef long long int ll;
 ll HRX=1e18;
 ll INF=1e9+7;
 
-//O(n)
+//O(n) You can assume that you can always reach the last index
 int jump(vector<int>& nums) 
     {
      int n=nums.size();
