@@ -22,7 +22,7 @@ public:
        if(nums[j]>nums[i])
        {
          if(dp[j]==1+dp[i])
-             cnt[j]+=cnt[i];
+             cnt[j]+=cnt[i]; //i.e-1 1 2
          else if(dp[j]<1+dp[i])
          {
           dp[j]=1+dp[i];
@@ -30,7 +30,7 @@ public:
          }
        }
       }
-      if(maxx==dp[j])res+=cnt[j];
+      if(maxx==dp[j])res+=cnt[j];// 1 1 2 2
       if(maxx<dp[j])
       {
        maxx=dp[j];
