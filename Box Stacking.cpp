@@ -19,7 +19,7 @@ ll INF=1e9+7;
 
 void boxstacking(ll n,ll len[],ll wid[],ll hei[])
 {
- ll a[3*n][4];
+ ll a[3*n][4];// Area L B H
  ll p=0;
  for(ll i=0;i<n;i++)
  {
@@ -62,7 +62,7 @@ void boxstacking(ll n,ll len[],ll wid[],ll hei[])
  {
   for(ll i=0;i<j;i++)
   {
-   if((a[i][1]>a[j][1] && a[i][2]>a[j][2]) || (a[i][1]>a[j][2] && a[i][2]>a[j][1]))
+   if((a[i][1]>a[j][1] && a[i][2]>a[j][2]) || (a[i][1]>a[j][2] && a[i][2]>a[j][1]))// (L1>L2 && B1>B2) || (L1>B2 && B1>L2)
      res[j]=max(res[j],a[j][3]+res[i]);
   }
   if(res[j]>maxx)
