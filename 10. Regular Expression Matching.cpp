@@ -45,3 +45,4 @@ public:
 
 // s=xaabyc
 // p=xa*b.c
+// o/p-True
