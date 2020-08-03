@@ -27,10 +27,10 @@ void MaxProfit(ll price[],ll n,ll k)
       dp[i][j]=0;
     else
     {
-    ll res=INT_MIN;
+     dp[i][j]=-HRX;
     for(ll p=0;p<j;p++)
-      res=max(res,price[j]-price[p]+dp[i-1][p]);
-    dp[i][j]=max(dp[i][j-1],res);
+      dp[i][j]=max(dp[i][j],price[j]-price[p]+dp[i-1][p]);
+    
     }
   }
  }
