@@ -15,6 +15,16 @@ typedef long long int ll;
 ll HRX=1e18;
 ll INF=1e9+7;
 
+ // for any keystroke n, we will need to choose between:- 
+        // 1. pressing Ctrl-V once after copying the 
+        // A's obtained by n-3 keystrokes. 
+  
+        // 2. pressing Ctrl-V twice after copying the A's 
+        // obtained by n-4 keystrokes. 
+  
+        // 3. pressing Ctrl-V thrice after copying the A's 
+        // obtained by n-5 keystrokes.
+
 const ll N=1001;
 ll dp[N];
 void keyboard()
