@@ -42,3 +42,6 @@ public:
      return doit(s,p,m,n);
     }
 };
+
+// s=xaabyc
+// p=xa*b.c
