@@ -1,64 +1,64 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 #define mem(dp,a) memset(dp,a,sizeof(dp))
 #define pb(x) push_back(x)
 #define m_p(x,y) make_pair(x,y)
 #define rep(i,a,b) for(ll i=a;i<b;i++)
-#define repush_back(i,a,b) for(ll i=a;i>=b;i--)
-#define f(n) for(ll i=0;i<n;i++)
-#define r(n) for(ll j=0;j<n;j++)
-#define F first
-#define S second
-#define pi 3.14159265359
+#define per(i,b,a) for (ll i=b;i>=a;i--)
+#define all(v) (v).begin(),(v).end()
+#define ff first
+#define ss second
+#define pi acosl(-1.0l)
 #define hs ios_base::sync_with_stdio(false);cin.tie(NULL);
+#define fixed(n) fixed<<setprecision(n)
 using namespace std;
 typedef long long int ll;
-ll HRX=1e18;
-ll INF=1e9+7;
-
-
-int main()
-{
- hs;
- ll t;
- cin>>t;
- f(t)
+typedef long double ld;
+ll ESP=1e18;
+ll FCB=1e9+7;
+ll dir[][2]={{0,1},{0,-1},{1,0},{-1,0}};
+/*
+ freopen("in.txt","r",stdin);
+ freopen("out.txt","w",stdout);
+ */
+ 
+ int main()
  {
-  ll n;
-  cin>>n;
-  ll a[n],b[n],c[n];
-  f(n)
+  hs;
+  ll t;
+  cin>>t;
+  while(t--)
   {
-   cin>>a[i];
-   b[i]=1;
-   c[i]=1;
-  }
-
-  for(ll j=1;j<n;j++)
-  {
-    for(ll i=0;i<j;i++)
+    ll n;
+    cin>>n;
+    ll a[n],lis[n],lds[n];
+    rep(i,0,n)
     {
-     if(a[j]>a[i])
-       b[j]=max(b[i]+1,b[j]);
+     cin>>a[i];
+     lis[i]=1;
+     lds[i]=1;
     }
-  }
-
-
-  for(ll j=n-2;j>=0;j--)
-  {
-    for(ll i=n-1;i>j;i--)
+    for(ll j=1;j<n;j++)
     {
-     if(a[j]>a[i])
-      c[j]=max(c[j],c[i]+1);
+     for(ll i=0;i<j;i++)
+     {
+      if(a[j]>a[i])
+       lis[j]=max(lis[j],1+lis[i]);
+     }
     }
+    for(ll j=n-2;j>=0;j--)
+    {
+     for(ll i=n-1;i>j;i--)
+     {
+      if(a[j]>a[i])
+       lds[j]=max(lds[j],1+lds[i]);
+     }
+    }
+    ll maxx=-1;
+    rep(i,0,n)
+     maxx=max(maxx,lis[i]+lds[i]-1);
+    cout<<maxx<<"\n";
+     
+    
   }
-  ll maxx=-1;
-  f(n)
-  {
-    if(c[i]+b[i]-1>maxx)
-      maxx=c[i]+b[i]-1;
-  }
-  cout<<maxx<<endl;
+  return 0;
  }
-
- return 0;
-}
