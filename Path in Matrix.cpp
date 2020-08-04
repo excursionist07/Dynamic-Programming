@@ -1,3 +1,16 @@
+/*
+Given a N X N  matrix Matrix[N][N] of positive integers.  There are only three possible moves from a cell Matrix[r][c].
+
+1. Matrix[r+1][c]
+
+2. Matrix[r+1][c-1]
+
+3. Matrix[r+1][c+1]
+
+Starting from any column in row 0, return the largest sum of any of the paths up to row N-1.
+*/
+
+
 #include<bits/stdc++.h>
 #define mem(dp,a) memset(dp,a,sizeof(dp))
 #define pb(x) push_back(x)
