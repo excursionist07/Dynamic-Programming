@@ -1,25 +1,23 @@
 class Solution {
 public:
-    int combinationSum4(vector<int>& nums, int target)
+    int combinationSum4(vector<int>& nums, int target) 
     {
      int n=nums.size();
-     unsigned int dp[1+target];
-     dp[0]=1;
-     //int mod=1e9+7;
-     for(int i=1;i<=target;i++)
+     if(target==0)
+         return 1;
+     if(n==0)
+         return 0;
+     unsigned int dp[target+1];
+     for(int i=0;i<=target;i++)
          dp[i]=0;
-     for(int i=1;i<=target;i++)
+     dp[0]=1;
+     for(int j=1;j<=target;j++)
      {
-      for(int j=0;j<n;j++)
+      for(int i=0;i<n;i++)
       {
-       if(i-nums[j]>=0)
-       {
-          dp[i]+=dp[i-nums[j]];
-          //dp[i]%=mod;
-       }
-
+       if(j-nums[i]>=0)
+           dp[j]+=dp[j-nums[i]];
       }
-     // cout<<dp[i]<<" ";
      }
      return dp[target];
     }
