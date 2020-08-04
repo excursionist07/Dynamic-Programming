@@ -18,10 +18,11 @@ ll INF=1e9+7;
 void minimize_cost(ll len[],ll cost[],ll n,ll total)
 {
   ll k[n+1][total+1];
-  for(ll i=0;i<total+1;i++)
-    k[0][i]=HRX;
-  for(ll i=1;i<n+1;i++)
+   for(ll i=0;i<n+1;i++)
     k[i][0]=0;
+  for(ll i=1;i<total+1;i++)
+    k[0][i]=HRX;
+ 
   for(ll i=1;i<n+1;i++)
   {
     for(ll j=1;j<total+1;j++)
@@ -32,7 +33,10 @@ void minimize_cost(ll len[],ll cost[],ll n,ll total)
         k[i][j]=k[i-1][j];
     }
   }
-  cout<<k[n][total]<<endl;
+  if(k[n][total]!=HRX)
+    cout<<k[n][total]<<endl;
+  else
+     cout<<"-1"<<"\n";
 }
 
 int main()
