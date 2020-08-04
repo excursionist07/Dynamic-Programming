@@ -1,82 +1,76 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 #define mem(dp,a) memset(dp,a,sizeof(dp))
 #define pb(x) push_back(x)
 #define m_p(x,y) make_pair(x,y)
 #define rep(i,a,b) for(ll i=a;i<b;i++)
-#define repush_back(i,a,b) for(ll i=a;i>=b;i--)
-#define f(n) for(ll i=0;i<n;i++)
-#define r(n) for(ll j=0;j<n;j++)
-#define F first
-#define S second
-#define pi 3.14159265359
+#define per(i,b,a) for (ll i=b;i>=a;i--)
+#define all(v) (v).begin(),(v).end()
+#define ff first
+#define ss second
+#define pi acosl(-1.0l)
 #define hs ios_base::sync_with_stdio(false);cin.tie(NULL);
+#define fixed(n) fixed<<setprecision(n)
 using namespace std;
 typedef long long int ll;
-ll HRX=1e18;
-ll INF=1e9+7;
-
-
-void lcs(string s1,string s2)
-{
- ll m=s1.length();
- ll n=s2.length();
- ll maxx=0,row,col;
- ll k[m+1][n+1];
- f(m+1)
+typedef long double ld;
+ll ESP=1e18;
+ll FCB=1e9+7;
+ll dir[][2]={{0,1},{0,-1},{1,0},{-1,0}};
+/*
+ freopen("in.txt","r",stdin);
+ freopen("out.txt","w",stdout);
+ */
+ 
+ ll lcs(string str1,string str2,ll m,ll n)
  {
-  r(n+1)
+  ll dp[m+1][n+1];
+  ll maxx=0,row,col;
+  for(ll i=0;i<=m;i++)
   {
-   if(i==0 || j==0)
-    k[i][j]=0;
-   else if(s1[i-1]==s2[j-1])
+   for(ll j=0;j<=n;j++)
    {
-    k[i][j]=1+k[i-1][j-1];
-    if(k[i][j]>maxx)
-    {
-      maxx=k[i][j];
-      row=i;
-      col=j;
-    }
+     if(i==0 || j==0)
+      dp[i][j]=0;
+     else if(str1[i-1]==str2[j-1])
+     {
+      dp[i][j]=1+dp[i-1][j-1];
+      if(dp[i][j]>maxx)
+      {
+       maxx=dp[i][j];
+       row=i;
+       col=j;
+      }
+     }
+     else
+      dp[i][j]=0;
    }
-    else
-    k[i][j]=0;
   }
- }
-
- ll zz=maxx;
- char ch[zz];
- while(k[row][col]!=0)
- {
-   if(s1[row-1]==s2[col-1])
-   {
-    ch[--zz]=s1[row-1];
+  string ans="";
+  while(dp[row][col]!=0)
+  {
+    ans+=str1[row-1];
     row--;
     col--;
-   }
-
+   
+  }
+  reverse(ans.begin(),ans.end());
+  cout<<ans;
+  return maxx;
  }
- string str="";
- f(maxx)
+ 
+ int main()
  {
-  str=str+ch[i];
+  hs;
+  ll t;
+  cin>>t;
+  while(t--)
+  {
+   ll m,n;
+   cin>>m>>n;
+   string str1,str2;
+   cin>>str1>>str2;
+   cout<<lcs(str1,str2,m,n)<<"\n";
+   
+  }
+  return 0;
  }
- cout<<str<<endl;
-
-
-
-}
-int main()
-{
- hs;
- ll t;
- cin>>t;
- f(t)
- {
-
-  string s1,s2;
-  cin>>s1>>s2;
-  lcs(s1,s2);
-
- }
- return 0;
-}
