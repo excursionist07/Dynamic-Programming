@@ -16,6 +16,13 @@ ll HRX=1e18;
 ll INF=1e9+7;
 
 //O(n) You can assume that you can always reach the last index
+
+ /*
+maxReach- The variable maxReach stores at all time the maximal reachable index in the array.
+steps- The variable step stores the number of steps we can still take(and is initialized with value at index 0, i.e. initial number of steps)
+jumps-stores the amount of jumps necessary to reach that maximal reachable position.
+*/
+
 int jump(vector<int>& nums) 
     {
      int n=nums.size();
