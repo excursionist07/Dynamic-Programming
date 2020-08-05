@@ -57,7 +57,7 @@ ll dir[][2]={{0,1},{0,-1},{1,0},{-1,0}};
   return 0;
  }
 
-// 2-KEY KEYBOARD
+// 2-KEY KEYBOARD-----ans is sum of prime factors of n
 
 
 class Solution {
