@@ -40,12 +40,13 @@ ll dir[][2]={{0,1},{0,-1},{1,0},{-1,0}};
  ll doit(ll egg,ll floor)//O(egg*floor*floor)
  {
    ll dp[egg+1][floor+1];
-   for(ll i=1;i<=egg;i++)
+   for(ll i=1;i<=egg;i++)//  We need one trial for one floor and 0 trials for 0 floors 
    {
     dp[i][0]=0;
     dp[i][1]=1;
    }
-   for(ll i=1;i<=floor;i++)
+   for(ll i=1;i<=floor;i++)//  We always need j trials for one egg and j floors.
+  
     dp[1][i]=i;
    for(ll i=2;i<=egg;i++)
    {
