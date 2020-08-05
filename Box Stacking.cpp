@@ -21,7 +21,7 @@ void boxstacking(ll n,ll len[],ll wid[],ll hei[])
 {
  ll a[3*n][4];// Area L B H
  ll p=0;
- for(ll i=0;i<n;i++)
+ for(ll i=0;i<n;i++) //Assuming l>w
  {
   a[p][0]=len[i]*wid[i];
   a[p][1]=len[i];
