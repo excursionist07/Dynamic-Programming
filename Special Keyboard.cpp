@@ -1,20 +1,3 @@
-#include <bits/stdc++.h>
-#define mem(dp,a) memset(dp,a,sizeof(dp))
-#define pb(x) push_back(x)
-#define m_p(x,y) make_pair(x,y)
-#define rep(i,a,b) for(ll i=a;i<b;i++)
-#define repush_back(i,a,b) for(ll i=a;i>=b;i--)
-#define f(n) for(ll i=0;i<n;i++)
-#define r(n) for(ll j=0;j<n;j++)
-#define F first
-#define S second
-#define pi 3.14159265359
-#define hs ios_base::sync_with_stdio(false);cin.tie(NULL);
-using namespace std;
-typedef long long int ll;
-ll HRX=1e18;
-ll INF=1e9+7;
-
  // for any keystroke n, we will need to choose between:- 
         // 1. pressing Ctrl-V once after copying the 
         // A's obtained by n-3 keystrokes. 
@@ -25,30 +8,51 @@ ll INF=1e9+7;
         // 3. pressing Ctrl-V thrice after copying the A's 
         // obtained by n-5 keystrokes.
 
-const ll N=1001;
-ll dp[N];
-void keyboard()
-{
-
- f(7)
-  dp[i]=i;
- for(ll i=7;i<=N;i++)
+#include<bits/stdc++.h>
+#define mem(dp,a) memset(dp,a,sizeof(dp))
+#define pb(x) push_back(x)
+#define m_p(x,y) make_pair(x,y)
+#define rep(i,a,b) for(ll i=a;i<b;i++)
+#define per(i,b,a) for (ll i=b;i>=a;i--)
+#define all(v) (v).begin(),(v).end()
+#define ff first
+#define ss second
+#define pi acosl(-1.0l)
+#define hs ios_base::sync_with_stdio(false);cin.tie(NULL);
+#define fixed(n) fixed<<setprecision(n)
+using namespace std;
+typedef long long int ll;
+typedef long double ld;
+ll ESP=1e18;
+ll FCB=1e9+7;
+ll dir[][2]={{0,1},{0,-1},{1,0},{-1,0}};
+/*
+ freopen("in.txt","r",stdin);
+ freopen("out.txt","w",stdout);
+ */
+ 
+ const ll N=100;
+ ll dp[N];
+ 
+ void doit()
  {
-  dp[i]=max(2*dp[i-3],(max(3*dp[i-4],4*dp[i-5])));
+  rep(i,0,7)
+   dp[i]=i;
+  rep(i,7,N)
+   dp[i]=max(2*dp[i-3],max(3*dp[i-4],4*dp[i-5]));
  }
-
-}
-int main()
-{
- hs;
- ll t;
- cin>>t;
- keyboard();
- f(t)
+ 
+ int main()
  {
-  ll n;
-  cin>>n;
-  cout<<dp[n]<<endl;
+  hs;
+  doit();
+  ll t;
+  cin>>t;
+  while(t--)
+  {
+   ll n;
+   cin>>n;
+   cout<<dp[n]<<"\n";
+  }
+  return 0;
  }
- return 0;
-}
