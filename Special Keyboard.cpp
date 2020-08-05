@@ -56,3 +56,26 @@ ll dir[][2]={{0,1},{0,-1},{1,0},{-1,0}};
   }
   return 0;
  }
+
+// 2-KEY KEYBOARD
+
+
+class Solution {
+public:
+    int minSteps(int n) 
+    {
+     if(n==1)
+         return 0;
+     int ans=0,p=2;
+     while(n>1)
+     {
+      while(n%p==0)
+      {
+       ans+=p;
+       n/=p;
+      }
+      p++;
+     }
+     return ans;
+    }
+};
