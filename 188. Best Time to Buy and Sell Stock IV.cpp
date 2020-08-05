@@ -49,7 +49,7 @@ public:
       return res;
           
      }
-     cout<<n;
+     
      return doit(prices,k);
     }
 };
