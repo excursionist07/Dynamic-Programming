@@ -3,51 +3,52 @@
 #define pb(x) push_back(x)
 #define m_p(x,y) make_pair(x,y)
 #define rep(i,a,b) for(ll i=a;i<b;i++)
-#define repush_back(i,a,b) for(ll i=a;i>=b;i--)
-#define f(n) for(ll i=0;i<n;i++)
-#define r(n) for(ll j=0;j<n;j++)
-#define F first
-#define S second
-#define pi 3.14159265359
+#define per(i,b,a) for (ll i=b;i>=a;i--)
+#define all(v) (v).begin(),(v).end()
+#define ff first
+#define ss second
+#define pi acosl(-1.0l)
 #define hs ios_base::sync_with_stdio(false);cin.tie(NULL);
+#define fixed(n) fixed<<setprecision(n)
 using namespace std;
 typedef long long int ll;
-ll HRX=1e18;
-ll INF=1e9+7;
+typedef long double ld;
+ll ESP=1e18;
+ll FCB=1e9+7;
+ll dir[][2]={{0,1},{0,-1},{1,0},{-1,0}};
+/*
+ freopen("in.txt","r",stdin);
+ freopen("out.txt","w",stdout);
+ */
 
 int main()
 {
  hs;
  ll t;
  cin>>t;
- f(t)
+ while(t--)
  {
   ll n;
   cin>>n;
   ll a[n];
-  f(n)
-  {
+  rep(i,0,n)
    cin>>a[i];
-  }
   ll dp[n][n];
-  f(n)
-  {
+  rep(i,0,n)
    dp[i][i]=a[i];
-  }
-  for(ll i=0;i<n-1;i++)
+  rep(i,0,n-1)
+   dp[i][i+1]=max(a[i],a[i+1]);
+  for(ll len=3;len<=n;len++)
   {
-    dp[i][i+1]=max(a[i],a[i+1]);
+    for(ll i=0;i<n-len+1;i++)
+    {
+     ll j=i+len-1;
+     dp[i][j]=max(a[i]+min(dp[i+1][j-1],dp[i+2][j]),a[j]+min(dp[i][j-2],dp[i+1][j-1]));
+    }
   }
-  for(ll k=3;k<=n;k++)
-  {
-   for(ll i=0;i<n-k+1;i++)
-   {
-    ll j=i+k-1;
-    dp[i][j]=max(a[i]+min(dp[i+2][j],dp[i+1][j-1]),a[j]+min(dp[i+1][j-1],dp[i][j-2]));
-   }
-  }
-  cout<<dp[0][n-1]<<endl;
-
+  cout<<dp[0][n-1]<<"\n";
+  
  }
  return 0;
+ 
 }
