@@ -40,7 +40,7 @@ void boxstacking(ll n,ll len[],ll wid[],ll hei[])
   p++;
 
  }
- for(ll j=1;j<p;j++)
+ for(ll j=1;j<p;j++)// sort in decreasing order of base area
  {
   for(ll i=0;i<j;i++)
   {
