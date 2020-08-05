@@ -30,12 +30,12 @@ ll dir[][2]={{0,1},{0,-1},{1,0},{-1,0}};
   ll minn=ESP,res;
   for(ll i=1;i<=floor;i++)
   {
-   res=max(doit(egg-1,i-1),doit(egg,floor-i));
+   res=1+max(doit(egg-1,i-1),doit(egg,floor-i));
    if(res<minn)
     minn=res;
   }
 
-  return 1+minn;
+  return minn;
  }*/
  ll doit(ll egg,ll floor)//O(egg*floor*floor)
  {
