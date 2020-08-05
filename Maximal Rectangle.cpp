@@ -1,5 +1,3 @@
-const int N=1e3+7;
-    int dp[N][N];
 
 class Solution {
 public:
@@ -40,6 +38,7 @@ public:
      int m=matrix.size();
      if(m==0)return 0;
      int n=matrix[0].size();
+     int dp[m][n];
      for(int i=0;i<n;i++)
          dp[0][i]=matrix[0][i]-'0';
      for(int i=1;i<m;i++)
