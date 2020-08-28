@@ -46,3 +46,37 @@ public:
      return max(doit(nums,0,n-2),doit(nums,1,n-1));
     }
 };
+
+// 337. House Robber III
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    int doit(TreeNode* root,int& l,int& r)
+    {
+     if(!root)
+         return 0;
+     int ll=0,lr=0,rl=0,rr=0;
+     l=doit(root->left,ll,lr);
+     r=doit(root->right,rl,rr);
+     return max(root->val+ll+lr+rl+rr,l+r);
+    }
+    int rob(TreeNode* root)
+    {
+     if(!root)
+         return 0;
+     int l,r;
+     return doit(root,l,r);
+     
+    }
+};
