@@ -46,6 +46,25 @@ int main()
 	return 0;
 }
 
+// n*log(n)
+
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums)
+    {
+     vector<int>ans;
+     for(int i=0;i<nums.size();i++)
+     {
+      int idx=lower_bound(ans.begin(),ans.end(),nums[i])-ans.begin();
+      if(idx==ans.size())
+         ans.push_back(nums[i]);
+      else
+          ans[idx]=nums[i];
+     }
+     return ans.size();
+    }
+};
+
 /*
 https://practice.geeksforgeeks.org/problems/longest-increasing-subsequence/0
 https://www.hackerrank.com/challenges/longest-increasing-subsequent/problem
