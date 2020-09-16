@@ -1,3 +1,5 @@
+// o(n*n) && o(n*n)
+
 class Solution {
 public:
     string lps(string str)
@@ -47,3 +49,57 @@ public:
      return lps(s);
     }
 };
+
+// o(n*n) && o(n*n) --> expanding around the center
+
+class Solution {
+public:
+    string longestPalindrome(string s) 
+    {
+     int n=s.length();
+     if(n==0)
+         return "";
+     vector<int>d1(n),d2(n);
+     // expanding around the center
+        
+     for(int i=0;i<n;i++)
+     {
+      // odd length
+      d1[i]=1;
+      while(i-d1[i]>=0 && i+d1[i]<n && s[i-d1[i]]==s[i+d1[i]])
+          d1[i]++;
+      
+      // even length
+      d2[i]=0;
+      while(i-d2[i]-1>=0 && i+d2[i]<n && s[i-d2[i]-1]==s[i+d2[i]])
+          d2[i]++;
+      
+     }
+    
+     int maxx1=0,maxx2=0,idx1=-1,idx2=-1;
+     for(int i=0;i<n;i++)
+     {
+      if(2*d1[i]-1>maxx1)
+      {
+       maxx1=2*d1[i]-1;
+       idx1=i;
+      }
+     }
+        
+     for(int i=0;i<n;i++)
+     {
+      if(2*d2[i]>maxx2)
+      {
+       maxx2=2*d2[i];
+       idx2=i;
+      }
+     }
+     if(maxx1>maxx2)
+         return s.substr(idx1-maxx1/2,maxx1/2)+s[idx1]+s.substr(idx1+1,maxx1/2);
+     else
+         return s.substr(idx2-maxx2/2,maxx2/2)+s.substr(idx2,maxx2/2);
+     
+    }
+};
+
+
