@@ -50,7 +50,7 @@ public:
     }
 };
 
-// o(n*n) && o(n*n) --> expanding around the center
+// o(n*n) && o(n) --> expanding around the center
 
 class Solution {
 public:
