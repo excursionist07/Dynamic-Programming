@@ -50,6 +50,45 @@ public:
     }
 };
 
+// o(n*n) && o(1) --> expanding around the center
+
+class Solution {
+public:
+    string longestPalindrome(string s) 
+    {
+     int n=s.length();
+     if(n<2)
+         return s;
+     int len=1,start=0;
+     for(int i=1;i<n;i++)
+     {
+      // odd size palindrome
+      int lo=i-1,hi=i+1;
+      while(lo>=0 && hi<n && s[lo]==s[hi])
+      {
+       if(hi-lo+1>len)
+         len=hi-lo+1,start=lo;   
+       lo--;
+       hi++;
+       
+      }
+      // even size palindrome
+      lo=i-1;hi=i;
+      while(lo>=0 && hi<n && s[lo]==s[hi])
+      {
+       if(hi-lo+1>len)
+           len=hi-lo+1,start=lo;
+       lo--;
+       hi++;
+       
+      }
+     
+     }
+     return s.substr(start,len);
+        
+    }
+};
+
 // o(n*n) && o(n) --> expanding around the center (trivial algo used in manachers)
 
 class Solution {
