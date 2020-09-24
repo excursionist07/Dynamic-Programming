@@ -75,7 +75,7 @@ https://www.codechef.com/problems/JUMP
 
 // 45. Jump Game II
 
-//O(n) You can assume that you can always reach the last index
+//O(n)
 
  /*
 maxReach- The variable maxReach stores at all time the maximal reachable index in the array.
