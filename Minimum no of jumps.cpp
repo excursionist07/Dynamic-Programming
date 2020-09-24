@@ -15,38 +15,6 @@ typedef long long int ll;
 ll HRX=1e18;
 ll INF=1e9+7;
 
-//O(n) You can assume that you can always reach the last index
-
- /*
-maxReach- The variable maxReach stores at all time the maximal reachable index in the array.
-steps- The variable step stores the number of steps we can still take(and is initialized with value at index 0, i.e. initial number of steps)
-jumps-stores the amount of jumps necessary to reach that maximal reachable position.
-*/
-
-int jump(vector<int>& nums) 
-    {
-     int n=nums.size();
-     if(n==0 || n==1)
-         return 0;
-     int maxreach=nums[0];
-     int steps=nums[0];
-     int jumps=1;
-     for(int i=1;i<n;i++)
-     {
-       if(i==n-1)
-           return jumps;
-       maxreach=max(maxreach,i+nums[i]);
-       steps--;
-       if(steps==0)
-       {
-        jumps++;
-        if(i>=maxreach)
-            return -1;
-         steps=maxreach-i;
-       }
-     }
-        return -1;
-    }
 
 int main()
 {
@@ -104,3 +72,38 @@ https://www.spoj.com/problems/STAR3CAS/
 https://www.spoj.com/problems/DCEPC12F/
 https://www.codechef.com/problems/JUMP
 */
+
+// 45. Jump Game II
+
+//O(n) You can assume that you can always reach the last index
+
+ /*
+maxReach- The variable maxReach stores at all time the maximal reachable index in the array.
+steps- The variable step stores the number of steps we can still take(and is initialized with value at index 0, i.e. initial number of steps)
+jumps-stores the amount of jumps necessary to reach that maximal reachable position.
+*/
+
+int jump(vector<int>& nums) 
+    {
+     int n=nums.size();
+     if(n==0 || n==1)
+         return 0;
+     int maxreach=nums[0];
+     int steps=nums[0];
+     int jumps=1;
+     for(int i=1;i<n;i++)
+     {
+       if(i==n-1)
+           return jumps;
+       maxreach=max(maxreach,i+nums[i]);
+       steps--;
+       if(steps==0)
+       {
+        jumps++;
+        if(i>=maxreach)
+            return -1;
+         steps=maxreach-i;
+       }
+     }
+        return -1;
+    }
