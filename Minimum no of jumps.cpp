@@ -100,7 +100,7 @@ int jump(vector<int>& nums)
        if(steps==0)
        {
         jumps++;
-        if(i>=maxreach)
+        if(i>=maxreach) // 1,1,1,0,1
             return -1;
          steps=maxreach-i;
        }
