@@ -31,7 +31,7 @@ public:
      dp[0]=nums[l];
      dp[1]=max(nums[l],nums[l+1]);
      for(int i=l+2;i<=r;i++)
-         dp[i-l]=max(dp[i-1-l],nums[i]+dp[i-2-l]);
+         dp[i-l]=max(dp[i-l-1],nums[i]+dp[i-l-2]);
      return dp[n-1];
     }
     int rob(vector<int>& nums) 
