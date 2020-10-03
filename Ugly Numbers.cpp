@@ -1,4 +1,4 @@
-// UGLY NUMBER I
+// 263.UGLY NUMBER I
 
 class Solution {
 public:
@@ -16,7 +16,7 @@ public:
     }
 };
 
-// UGLY NUMBER II
+// 264.UGLY NUMBER II
 
 class Solution {
 public:
