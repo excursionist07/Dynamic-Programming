@@ -45,6 +45,7 @@ int main()
   priority_queue<PI,vector<PI>,greater<PI>>pq;
   pq.push(m_p(a[0][0],m_p(0,0)));
   dist[0][0]=a[0][0];
+  vis[0][0]=1;
 
   while(!pq.empty())
   {
@@ -53,16 +54,16 @@ int main()
    ll weight=u.first;
    ll x=u.second.first;
    ll y=u.second.second;
-   if(vis[x][y])
+   /*if(vis[x][y])
      continue;
-   vis[x][y]=1;
+   vis[x][y]=1;*/
    for(ll i=0;i<4;i++)
    {
     ll xx=x+dir[i][0];
     ll yy=y+dir[i][1];
     if(xx>=0 && yy>=0 && xx<n && yy<n && dist[xx][yy]>dist[x][y]+a[xx][yy] && !vis[xx][yy])
     {
-
+     vis[xx][yy]=1;
      dist[xx][yy]=dist[x][y]+a[xx][yy];
      pq.push(m_p(dist[xx][yy],m_p(xx,yy)));
     }
