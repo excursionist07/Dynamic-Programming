@@ -24,7 +24,7 @@ public:
 
 class Solution {
 public:
-    int doit(vector<int>&nums,int l,int r)
+    int doit(vector<int>&nums,int l,int r) //--> replace i by i-l(L)
     {
      int n=nums.size()-1;
      int dp[n];
