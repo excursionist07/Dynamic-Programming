@@ -54,9 +54,6 @@ int main()
    ll weight=u.first;
    ll x=u.second.first;
    ll y=u.second.second;
-   /*if(vis[x][y])
-     continue;
-   vis[x][y]=1;*/
    for(ll i=0;i<4;i++)
    {
     ll xx=x+dir[i][0];
