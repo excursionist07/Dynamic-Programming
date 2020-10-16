@@ -1,3 +1,5 @@
+// LIS
+
 #include <bits/stdc++.h>
 #define mem(dp,a) memset(dp,a,sizeof dp)
 #define INF 1000000007
@@ -89,3 +91,196 @@ https://www.codechef.com/problems/LISA
 https://www.hackerearth.com/problem/algorithm/longest-increasing-subsequence-2/
 https://codeforces.com/problemset/problem/1017/C
 */
+
+// Longest Bitonic subsequence
+
+#include<bits/stdc++.h>
+#define mem(dp,a) memset(dp,a,sizeof(dp))
+#define pb(x) push_back(x)
+#define m_p(x,y) make_pair(x,y)
+#define rep(i,a,b) for(ll i=a;i<b;i++)
+#define per(i,b,a) for (ll i=b;i>=a;i--)
+#define all(v) (v).begin(),(v).end()
+#define ff first
+#define ss second
+#define pi acosl(-1.0l)
+#define hs ios_base::sync_with_stdio(false);cin.tie(NULL);
+#define fixed(n) fixed<<setprecision(n)
+using namespace std;
+typedef long long int ll;
+typedef long double ld;
+ll ESP=1e18;
+ll FCB=1e9+7;
+ll dir[][2]={{0,1},{0,-1},{1,0},{-1,0}};
+/*
+ freopen("in.txt","r",stdin);
+ freopen("out.txt","w",stdout);
+ */
+ 
+ int main()
+ {
+  hs;
+  ll t;
+  cin>>t;
+  while(t--)
+  {
+    ll n;
+    cin>>n;
+    ll a[n],lis[n],lds[n];
+    rep(i,0,n)
+    {
+     cin>>a[i];
+     lis[i]=1;
+     lds[i]=1;
+    }
+    for(ll j=1;j<n;j++)
+    {
+     for(ll i=0;i<j;i++)
+     {
+      if(a[j]>a[i])
+       lis[j]=max(lis[j],1+lis[i]);
+     }
+    }
+    for(ll j=n-2;j>=0;j--)
+    {
+     for(ll i=n-1;i>j;i--)
+     {
+      if(a[j]>a[i])
+       lds[j]=max(lds[j],1+lds[i]);
+     }
+    }
+    ll maxx=-1;
+    rep(i,0,n)
+     maxx=max(maxx,lis[i]+lds[i]-1);
+    cout<<maxx<<"\n";
+     
+    
+  }
+  return 0;
+ }
+
+// 673. Number of Longest Increasing Subsequence
+
+class Solution {
+public:
+
+    /*
+    The idea is to use two arrays len[n] and cnt[n] to record the maximum length of Increasing Subsequence and the coresponding number of these sequence which ends with nums[i], respectively. 
+    That is:
+      dp[i]: the length of the Longest Increasing Subsequence which ends with nums[i].
+      cnt[i]: the number of the Longest Increasing Subsequence which ends with nums[i].
+   */
+    int findNumberOfLIS(vector<int>& nums)
+    {
+     int n=nums.size();
+     if(n<=1)
+         return n;
+     int dp[n],cnt[n];
+     int maxx=0,res=0;
+     for(int j=0;j<n;j++)
+     {
+      dp[j]=1;cnt[j]=1;
+      for(int i=0;i<j;i++)
+      {
+       if(nums[j]>nums[i])
+       {
+         if(dp[j]==1+dp[i])
+             cnt[j]+=cnt[i]; //i.e-1 1 2
+         else if(dp[j]<1+dp[i])
+         {
+          dp[j]=1+dp[i];
+          cnt[j]=cnt[i];
+         }
+       }
+      }
+      if(maxx==dp[j])res+=cnt[j];// 1 1 2 2
+      if(maxx<dp[j])
+      {
+       maxx=dp[j];
+       res=cnt[j];
+      }
+     }
+     return res;
+
+
+    }
+};
+
+// Maximum sum increasing subsequence
+
+#include <bits/stdc++.h>
+#define mem(dp,a) memset(dp,a,sizeof(dp))
+#define pb(x) push_back(x)
+#define m_p(x,y) make_pair(x,y)
+#define rep(i,a,b) for(ll i=a;i<b;i++)
+#define repush_back(i,a,b) for(ll i=a;i>=b;i--)
+#define f(n) for(ll i=0;i<n;i++)
+#define r(n) for(ll j=0;j<n;j++)
+#define F first
+#define S second
+#define pi 3.14159265359
+#define hs ios_base::sync_with_stdio(false);cin.tie(NULL);
+using namespace std;
+typedef long long int ll;
+ll HRX=1e18;
+ll INF=1e9+7;
+
+
+int main()
+{
+ hs;
+ ll t;
+ cin>>t;
+ f(t)
+ {
+  ll n;
+  cin>>n;
+  ll a[n],b[n],c[n];
+  f(n)
+  {
+    cin>>a[i];
+    b[i]=a[i];
+    c[i]=i;
+  }
+  for(ll j=1;j<n;j++)
+  {
+    for(ll i=0;i<j;i++)
+    {
+     if(a[j]>a[i])
+     {
+      b[j]=max(b[j],a[j]+b[i]);
+      if(b[j]==a[j]+b[i])
+        c[j]=i;
+     }
+    }
+  }
+
+  ll maxx=-1,index;
+  f(n)
+  {
+   if(b[i]>maxx)
+   {
+    maxx=b[i];
+    index=i;
+   }
+  }
+  cout<<maxx<<endl;
+
+  ll sum=0;
+  while(sum!=maxx)
+  {
+    cout<<a[index]<<" ";
+    sum=sum+a[index];
+    index=c[index];
+  }
+ }
+ return 0;
+}
+
+/*
+https://practice.geeksforgeeks.org/problems/maximum-sum-increasing-subsequence/0
+https://www.codechef.com/problems/LISA
+https://www.codechef.com/problems/SEAINCR
+https://www.codechef.com/problems/MMSUM
+*/
+
