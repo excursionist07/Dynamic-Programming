@@ -60,7 +60,7 @@ public:
      for(int i=1;i<=n;i++)
      {
       if(p[i-1]=='*')
-          dp[0][i]=dp[0][i-2];
+          dp[0][i]=dp[0][i-2]; //--> we can't put all 0 in this b'coz patttern may start from ".*"-->(s="",p=".*"  , here anaswer will be true)
       else
           dp[0][i]=0;
      }
