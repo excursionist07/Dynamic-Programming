@@ -35,7 +35,7 @@ public:
 };
 
 
-// Minimum coins to get tota
+// Minimum coins to get total
 
 class Solution {
 public:
