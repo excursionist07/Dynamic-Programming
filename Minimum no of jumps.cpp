@@ -134,7 +134,7 @@ public:
      {
       for(int i=j;i>=0;i--)
       {
-       if(dp[i]>=stations[j][0])
+       if(dp[i]>=stations[j][0]) // f it can reach station j, then we can refuel it from station j to cover maximum distance.
            dp[i+1]=max(dp[i+1],dp[i]+stations[j][1]);
       }
      }
