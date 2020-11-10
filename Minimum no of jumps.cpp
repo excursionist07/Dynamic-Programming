@@ -107,3 +107,44 @@ int jump(vector<int>& nums)
      }
         return -1;
     }
+
+// 871. Minimum Number of Refueling Stops--->O(n^2)
+
+/*
+dp[i] means the furthest distance that we can get with i times of refueling.
+
+So for every station s[j],
+if the current distance dp[i] >= s[j][0], we can refuel:
+dp[i + 1] = max(dp[i + 1], dp[i] + s[j][1])
+
+In the end, we'll return the first t with dp[i] >= target,
+otherwise we'll return -1.
+*/
+
+class Solution {
+public:
+    int minRefuelStops(int target, int startFuel, vector<vector<int>>& stations) 
+    {
+     int n=stations.size();
+     unsigned int dp[n+1];
+     for(int i=0;i<=n;i++)
+         dp[i]=startFuel;
+    
+     for(int j=0;j<n;j++)
+     {
+      for(int i=j;i>=0;i--)
+      {
+       if(dp[i]>=stations[j][0])
+           dp[i+1]=max(dp[i+1],dp[i]+stations[j][1]);
+      }
+     }
+     for(int i=0;i<=n;i++)
+     {
+      if(dp[i]>=target)
+          return i;
+     }
+     return -1;
+    
+     
+    }
+};
