@@ -1,7 +1,7 @@
 // Painter's Partition Problem(IB)
 
 
-bool IsValid(vector<int>&C,int mid,int n)
+bool IsValid(vector<int>&C,int mid,int n) // O(n)
 {
  long long int painter=1,cur=0;
  for(int i=0;i<C.size();i++)
@@ -18,7 +18,7 @@ bool IsValid(vector<int>&C,int mid,int n)
  }
  return true;
 }
-long long int bs(vector<int>&C,int n)
+long long int bs(vector<int>&C,int n) // O(log(n))
 {
  long long int start=-1,end=0;
  for(int i=0;i<C.size();i++)
@@ -41,7 +41,7 @@ long long int bs(vector<int>&C,int n)
  return ans;
 }
 
-int Solution::paint(int A, int B, vector<int> &C) 
+int Solution::paint(int A, int B, vector<int> &C)  // O(n*log(n))
 {
   long long int zz=bs(C,A);
   return ((zz%10000003)*(B%10000003))%10000003;
