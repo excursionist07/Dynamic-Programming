@@ -30,7 +30,7 @@ long long int bs(vector<int>&C,int n) // O(log(n))
  while(start<=end)
  {
   int mid=(start+end)/2;
-  if(IsValid(C,mid,n))
+  if(IsValid(C,mid,n)) // -->if valid see if we can minimize the answer more...
   {
     ans=mid;
     end=mid-1;
