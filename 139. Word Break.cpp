@@ -64,7 +64,7 @@ public:
      {
       for(int i=0;i<xx.length();i++)
       {
-       dp[xx]=max(dp[xx],dp[xx.substr(0,i)+xx.substr(1+i)]+1); // just like word break for a particular word xx we are checking if any string(size of size(xx)-1) is present by masking each charcter of string xx one at a time
+       dp[xx]=max(dp[xx],dp[xx.substr(0,i)+xx.substr(1+i)]+1); // just like word break for a particular word xx we are checking if any string of size (size(xx)-1) is present by masking each charcter of string xx one at a time
        ans=max(ans,dp[xx]);
       }
      }
