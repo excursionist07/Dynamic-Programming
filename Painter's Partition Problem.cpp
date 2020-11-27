@@ -97,3 +97,50 @@ public:
      return ans;
     }
 };
+
+// 875. Koko Eating Bananas
+/*
+Time O(Nlog(MaxP))
+Space O(1)
+*/
+
+class Solution {
+public:
+    bool IsValid(vector<int>&piles,int H,int mid)
+    {
+     int cnt=0;
+     for(int i=0;i<piles.size();i++)
+     {
+      cnt+=((piles[i]+mid-1)/mid);
+      if(cnt>H)
+          return false;
+     }
+     return true;
+    }
+    int bs(vector<int>&piles,int H)
+    {
+     int start=1,end=0; // binary search from (start=1 to end) b'coz (piles = [3,6,7,11], H = 27, here it can eat 1 banana/hour)
+     for(int i=0;i<piles.size();i++)
+       end=max(end,piles[i]);
+     int ans;
+     while(start<=end)
+     {
+      int mid=(start+end)>>1;
+      if(IsValid(piles,H,mid))
+      {
+       ans=mid;
+       end=mid-1;
+        
+      }
+      else
+          start=mid+1;
+     }
+     return ans;
+    }
+    int minEatingSpeed(vector<int>& piles, int H) 
+    {
+     int n=piles.size();
+     int ans=bs(piles,H);
+     return ans;
+    }
+};
