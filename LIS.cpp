@@ -348,4 +348,39 @@ In this case, if we want to keep A and B increasing before the index i, can only
      return min(swap,not_swap);*/
 };
 
+// 354. Russian Doll Envelopes
+
+/*
+You have a number of envelopes with widths and heights given as a pair of integers (w, h). One envelope can fit into another if and only if both the width and height of one 
+envelope is greater than the width and height of the other envelope.
+What is the maximum number of envelopes can you Russian doll? (put one inside other)??
+*/
+
+class Solution {
+public:
+    int maxEnvelopes(vector<vector<int>>& envelopes) 
+    {
+     int n=envelopes.size();
+     if(n<2)
+         return n;
+     vector<pair<int,int>>vv;
+     for(int i=0;i<n;i++)
+         vv.push_back({envelopes[i][0],envelopes[i][1]});
+     sort(vv.begin(),vv.end());
+     int dp[n];
+     for(int i=0;i<n;i++)
+         dp[i]=1;
+     int ans=1;
+     for(int j=1;j<n;j++)
+     {
+      for(int i=0;i<j;i++)
+      {
+       if(vv[j].first>vv[i].first && vv[j].second>vv[i].second)
+           dp[j]=max(dp[j],1+dp[i]),ans=max(ans,dp[j]);
+      }
+     }
+     return ans;
+    }
+};
+
 
