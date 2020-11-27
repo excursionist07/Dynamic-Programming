@@ -383,4 +383,54 @@ public:
     }
 };
 
+// 2nd method-->(N*log(N))
+/*
+You can solve this problem in this way :
+
+let's suppose the values are given as...
+[2,3]
+[4,6]
+[3,7]
+[4,8]
+
+If we Sort this envelopes in a tricky way that Sort the envelopes according to width BUT when the values of height are same, we can sort it in reverse way like this :
+
+[2,3]
+[3,7]
+[4,8]
+[4,6]
+
+Now just Do LIS on the all height values, you will get the answer
+*/
+
+class Solution {
+public:
+    static bool compare(pair<int,int>&a,pair<int,int>&b) // --> static-b'coz it's not ana instance member function
+    {
+     return (a.first<b.first || (a.first==b.first && a.second>b.second));
+    }
+    int maxEnvelopes(vector<vector<int>>& envelopes) 
+    {
+     int n=envelopes.size();
+     if(n<2)
+         return n;
+     vector<pair<int,int>>vv;
+     for(int i=0;i<n;i++)
+         vv.push_back({envelopes[i][0],envelopes[i][1]});
+     sort(vv.begin(),vv.end(),compare);
+     vector<int>ans;
+     for(int i=0;i<n;i++)
+     {
+      int idx=lower_bound(ans.begin(),ans.end(),vv[i].second)-ans.begin();
+      if(idx==ans.size())
+          ans.push_back(vv[i].second);
+      else
+          ans[idx]=vv[i].second;
+     
+     }
+     return ans.size();
+     
+    }
+};
+
 
