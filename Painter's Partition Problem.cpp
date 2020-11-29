@@ -144,3 +144,54 @@ public:
      return ans;
     }
 };
+
+// 1482. Minimum Number of Days to Make m Bouquets
+
+class Solution {
+public:
+    bool IsValid(vector<int>&bloomDay,int mid,int k,int m)
+    {
+     int n=bloomDay.size();
+     int bouq=0,zz=0;
+     for(int i=0;i<n;i++)
+     {
+      if(bloomDay[i]>mid)
+          zz=0;
+      else if(++zz>=k)
+      {
+       bouq++;
+       zz=0;
+      }
+     }
+     return bouq>=m;
+     
+    }
+    int bs(vector<int>& bloomDay,int m,int k)
+    {
+     int start=1,end=-1;
+     for(int i=0;i<bloomDay.size();i++)
+         end=max(end,bloomDay[i]);
+     int ans=-1;
+     while(start<=end)
+     {
+      int mid=(start+end)>>1;
+      if(IsValid(bloomDay,mid,k,m))
+      {
+       ans=mid;
+       end=mid-1;
+      }
+      else
+          start=mid+1;
+     }
+     return ans;
+         
+    }
+    int minDays(vector<int>& bloomDay, int m, int k)
+    {
+      int n=bloomDay.size();
+      if(m*k>n)
+          return -1;
+      int ans=bs(bloomDay,m,k);
+      return ans;
+    }
+};
