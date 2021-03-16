@@ -379,7 +379,7 @@ public:
            dp[j]=max(dp[j],1+dp[i]),ans=max(ans,dp[j]);
       }
      }
-     return ans;
+     return ans; // if you have to print all indexes in LIS (https://codeforces.com/problemset/problem/4/D)
     }
 };
 
