@@ -195,3 +195,18 @@ public:
       return ans;
     }
 };
+
+/*
+Binary Search:
+
+https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/
+https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
+https://leetcode.com/problems/koko-eating-bananas/
+https://leetcode.com/problems/split-array-largest-sum/
+https://leetcode.com/problems/kth-missing-positive-number/
+https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/
+https://codeforces.com/problemset/problem/670/D1
+https://codeforces.com/problemset/problem/670/D2
+https://codeforces.com/problemset/problem/778/A
+https://codeforces.com/problemset/problem/363/D
+*/
