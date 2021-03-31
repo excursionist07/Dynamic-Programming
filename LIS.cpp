@@ -433,9 +433,48 @@ public:
     }
 };
 
+// 1671. Minimum Number of Removals to Make Mountain Array
+//  // O(n*log(n))  
+class Solution {
+public:
+    int minimumMountainRemovals(vector<int>& nums)
+    {
+     int n=nums.size();
+     vector<int>dp1(n),dp2(n);
+     vector<int>ans;
+     for(int i=0;i<n;i++)
+     {
+      int idx=lower_bound(ans.begin(),ans.end(),nums[i])-ans.begin();
+      if(idx==ans.size())
+          ans.push_back(nums[i]);
+      else
+          ans[idx]=nums[i];
+      dp1[i]=1+idx;
+     }
+     ans.clear();
+     for(int i=n-1;i>=0;i--)
+     {
+      int idx=lower_bound(ans.begin(),ans.end(),nums[i])-ans.begin();
+      if(idx==ans.size())
+          ans.push_back(nums[i]);
+      else
+          ans[idx]=nums[i];
+      dp2[i]=1+idx;
+     }
+        
+     int zz=0;
+     
+     for(int i=0;i<n;i++)
+     {
+      if(dp1[i]>1 && dp2[i]>1) // This is done b'coz in array first should increase then decrese (both must happen)
+          zz=max(zz,dp1[i]+dp2[i]-1);
+     }
+     return n-zz;
+    }
+};
+
 /*
 https://leetcode.com/problems/maximum-length-of-pair-chain/
-https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/
 https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/
 */
 
