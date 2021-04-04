@@ -127,7 +127,7 @@ public:
      int n=prices.size();
      if(n<=1 || k==0)
          return 0;
-     if(2*k>n)
+     if(2*k>=n)
      {
       int res=0;
       for(int i=1;i<n;i++)
