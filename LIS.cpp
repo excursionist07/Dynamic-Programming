@@ -50,7 +50,7 @@ public:
       else
           ans[idx]=nums[i];
      }
-     return ans.size();
+     return ans.size(); // if you want to print the lis then value in ans is not always correct.
     }
 };
 
