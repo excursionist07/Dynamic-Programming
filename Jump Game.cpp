@@ -148,3 +148,48 @@ public:
      
     }
 };
+
+// 1306. Jump Game III
+
+/*
+Given an array of non-negative integers arr, you are initially positioned at start index of the array. When you are at index i,
+you can jump to i + arr[i] or i - arr[i], check if you can reach to any index with value 0.
+
+Notice that you can not jump outside of the array at any time.
+*/
+
+class Solution {
+public:
+    bool canReach(vector<int>& arr, int start) 
+    {
+     int n=arr.size();
+     bool vis[n];
+     memset(vis,0,sizeof(vis));
+     queue<int>q;
+     q.push(start);
+     while(!q.empty())
+     {
+      int zz=q.size();
+      for(int i=0;i<zz;i++)
+      {
+       int u=q.front();
+       q.pop();
+       if(vis[u])
+           continue;
+       vis[u]=1;
+       if(u-arr[u]>=0 && !vis[u-arr[u]])
+           q.push(u-arr[u]);
+       if(u+arr[u]<n && !vis[u+arr[u]])
+           q.push(u+arr[u]);
+      }
+     }
+     for(int i=0;i<n;i++)
+     {
+      if(arr[i]==0 && vis[i])
+          return true;
+     }
+     return false;
+      
+     
+    }
+};
