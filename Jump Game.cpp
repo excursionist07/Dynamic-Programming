@@ -64,14 +64,7 @@ int main()
  return 0;
 }
 
-/*
-https://practice.geeksforgeeks.org/problems/minimum-number-of-jumps/0
-https://www.hackerrank.com/challenges/jumping-on-the-clouds/problem
-https://www.hackerearth.com/problem/algorithm/interesting-path/
-https://www.spoj.com/problems/STAR3CAS/
-https://www.spoj.com/problems/DCEPC12F/
-https://www.codechef.com/problems/JUMP
-*/
+
 
 // 45. Jump Game II
 
