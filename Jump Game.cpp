@@ -193,3 +193,49 @@ public:
      
     }
 };
+
+// 1345. Jump Game IV  --> MultiSource bfs
+
+class Solution {
+public:
+    int minJumps(vector<int>& arr) 
+    {
+     int n=arr.size();
+     unordered_map<int,vector<int>>mp;
+     for(int i=0;i<n;i++)
+         mp[arr[i]].push_back(i);
+     int ans=0;
+     queue<int>q;
+     vector<bool>vis(n,0);
+     q.push(0);
+     vis[0]=1;
+     while(!q.empty())
+     {
+      int zz=q.size();
+      for(int i=0;i<zz;i++)
+      {
+        int u=q.front();
+        q.pop();
+        if(u==n-1)return ans;
+        vector<int>&vv=mp[arr[u]]; // here vv must be reference vector for avoiding later same checkup
+        vv.push_back(u-1);
+        vv.push_back(u+1);
+        for(auto xx:vv)
+        {
+         if(xx>=0 && xx<n && !vis[xx])
+         {
+          vis[xx]=1;
+          q.push(xx);
+         }
+        }
+        vv.clear(); // Avoid later checking for that index
+       }
+       ans++;
+     }
+     return -1;
+     
+     
+    }
+};
+
+// Time & Space: O(N)
