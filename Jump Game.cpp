@@ -196,6 +196,68 @@ public:
 
 // Time & Space: O(N)
 
+// 1654. Minimum Jumps to Reach Home
+
+class Solution {
+public:
+    int bfs(unordered_set<int>& ss,int a,int b,int x)
+    {
+     bool vis[6001][2];
+     memset(vis,0,sizeof(vis));
+     vis[0][0]=1;
+     vis[0][1]=1;
+     queue<pair<int,bool>>q;
+     // true means your last jump was backward jumping, you cannot jump backward in      current step.
+		// false, otherwise.
+     q.push({0,0});
+     int ans=0;
+     while(!q.empty())
+     {
+      int zz=q.size();
+      while(zz--)
+      {
+       int u=q.front().first;
+       bool ff=q.front().second;
+       q.pop();
+       if(u==x)return ans;  
+       int forward=u+a;
+       int backward=u-b;
+       if(forward<6001 && !vis[forward][0] && !ss.count(forward))
+       {
+         vis[forward][0]=1;
+         q.push({forward,0});
+       }
+       if(backward>=0 && !vis[backward][1] && !ss.count(backward) && !ff)
+       {
+         vis[backward][1]=1;
+         q.push({backward,1});
+       }
+      }
+      ans++;
+     }
+     return -1;
+     
+  
+    }
+    int minimumJumps(vector<int>& forbidden, int a, int b, int x) 
+    {
+     unordered_set<int>ss(forbidden.begin(),forbidden.end());
+     return bfs(ss,a,b,x);
+    }
+};
+
+/*
+first thing to note is that all reachable positions must be a factor of gcd(a,b).
+maximum search is capped at stop = a+b+max(x, max(forbidden)):
+
+// visited[i][0] means the ith cell was reached from its left hand side jumping forward, 
+// visited[i][1] means the ith cell was reached from its right hand side jumping backward. 
+// Time & space: O(max(x, max(forbidden)) + a + b).
+
+*/
+
+
+
 // 871. Minimum Number of Refueling Stops--->O(n^2)
 
 /*
