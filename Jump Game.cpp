@@ -207,7 +207,7 @@ public:
      vis[0][0]=1;
      vis[0][1]=1;
      queue<pair<int,bool>>q;
-     // true means your last jump was backward jumping, you cannot jump backward in      current step.
+     // true means your last jump was backward jumping, you cannot jump backward in current step.
 		// false, otherwise.
      q.push({0,0});
      int ans=0;
