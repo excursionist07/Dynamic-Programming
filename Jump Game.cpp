@@ -150,7 +150,7 @@ public:
 
 
 
-// 1345. Jump Game IV  --> MultiSource bfs
+// 1345. Jump Game IV  --> MultiSource BFS
 
 class Solution {
 public:
