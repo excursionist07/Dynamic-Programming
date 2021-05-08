@@ -52,3 +52,6 @@ int main()
  return 0;
  
 }
+
+// dp(i, j) represents the maximum value the user can collect from i'th coin to j'th coin.
+
