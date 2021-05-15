@@ -55,7 +55,7 @@ int jump(vector<int>& nums)
        if(steps==0)
        {
         jumps++;
-        if(i>=maxreach) // 1,1,1,0,1
+        if(i>=maxreach) // 1,1,1,0,1 -->[Check if the current index/position  is the maximum reach point from the previous indexes]
             return -1;
          steps=maxreach-i;
        }
