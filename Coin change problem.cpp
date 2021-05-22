@@ -71,6 +71,33 @@ public:
     }
 };
 
+// 983. Minimum Cost For Tickets
+
+class Solution {
+public:
+   
+    int mincostTickets(vector<int>& days, vector<int>& costs) 
+    {
+     unordered_set<int>ss(days.begin(),days.end());
+     vector<int>dp(366,INT_MAX);
+     dp[0]=0;
+     for(int i=1;i<=365;i++)
+     {
+      if(ss.find(i)==ss.end())
+          dp[i]=dp[i-1];
+      else
+          dp[i]=min({dp[i-1]+costs[0],dp[max(0,i-7)]+costs[1],dp[max(0,i-30)]+costs[2]});
+     }
+     return dp[365];
+     
+    }
+};
+/*
+Time Complexity: O(N), where N is the number of calendar days.
+Space Complexity: O(N) or O(31) for the optimized solution. Stricter, it's a maximum duration among all pass types.
+*/
+
+
 // 377. Combination Sum IV
 
 class Solution {
