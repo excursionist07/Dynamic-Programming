@@ -450,4 +450,51 @@ https://leetcode.com/problems/maximum-length-of-pair-chain/
 https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/
 */
 
+// 665. Non-decreasing Array
+
+// Given an array nums with n integers, your task is to check if it could become non-decreasing by modifying at most one element.
+
+// 1st method--> O(n^2)
+
+class Solution {
+public:
+    bool checkPossibility(vector<int>& nums) 
+    {
+      int n=nums.size();
+      vector<int>dp(n,1);
+      for(int j=1;j<n;j++)
+      {
+       for(int i=0;i<j;i++)
+       {
+        if(nums[j]>=nums[i])
+            dp[j]=max(dp[j],1+dp[i]);
+       }
+      }
+      int zz=*max_element(dp.begin(),dp.end());
+      return zz>=n-1;
+     
+    }
+};
+
+// 2nd Method--> O(n*log(n))
+
+class Solution {
+public:
+    bool checkPossibility(vector<int>& nums) 
+    {
+     int n=nums.size();
+     vector<int>ans;
+     for(int i=0;i<n;i++)
+     {
+      int idx=upper_bound(ans.begin(),ans.end(),nums[i])-ans.begin();
+      if(idx==ans.size())
+          ans.push_back(nums[i]);
+      else
+          ans[idx]=nums[i];
+     }
+     return (ans.size()>=n-1);
+     
+    }
+};
+
 
