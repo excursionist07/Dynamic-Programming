@@ -129,3 +129,39 @@ ll dir[][2]={{0,1},{0,-1},{1,0},{-1,0}};
   }
   return 0;
  }
+
+// 1504. Count Submatrices With All Ones --> for doubt (https://leetcode.com/problems/count-submatrices-with-all-ones/discuss/720265/Java-Detailed-Explanation-From-O(MNM)-to-O(MN)-by-using-Stack)
+
+class Solution {
+public:
+    int doit(vector<int>& vv) // Like we do in 1-D array
+    {
+     int ans=0,zz=0;
+     for(int i=0;i<vv.size();i++)
+     {
+      zz=(vv[i]==0 ? 0 : 1+zz);
+      ans+=zz;
+     }
+     return ans;
+    }
+    int numSubmat(vector<vector<int>>& mat) 
+    {
+     int m=mat.size();
+     int n=mat[0].size();
+     int ans=0;
+     for(int j=0;j<n;j++)
+     {
+      vector<int>vv(m,1);
+      for(int i=j;i<n;i++)
+      {
+       for(int k=0;k<m;k++)
+           vv[k]&=mat[k][i];
+       ans+=doit(vv);
+      }
+     }
+     return ans;
+     
+    }
+};
+
+// O(n * n * n):
