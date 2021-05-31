@@ -269,6 +269,33 @@ int main()
  return 0;
 }
 
+// 174. Dungeon Game
+
+class Solution {
+public:
+    int calculateMinimumHP(vector<vector<int>>& dungeon) 
+    {
+     int m=dungeon.size();
+     int n=dungeon[0].size();
+     int dp[m+1][n+1];// adding one dummy row & col for just ease.
+     for(int i=0;i<=m;i++)
+         for(int j=0;j<=n;j++)
+             dp[i][j]=INT_MAX;
+     dp[m][n-1]=1; // b'coz at any cell health can't be 0
+     dp[m-1][n]=1; // b'coz at any cell health can't be 0
+     for(int i=m-1;i>=0;i--)
+     {
+      for(int j=n-1;j>=0;j--)
+      {
+       int xx=min(dp[i][j+1],dp[i+1][j])-dungeon[i][j];
+       dp[i][j]=(xx<=0 ? 1 : xx);
+      }
+     }
+     return dp[0][0];
+        
+    }
+};
+
 // Path in Matrix
 
 /*
