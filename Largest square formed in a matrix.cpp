@@ -164,4 +164,44 @@ public:
     }
 };
 
-// O(n * n * n):
+// O(n * n * m):
+
+// 1074. Number of Submatrices That Sum to Target
+
+class Solution {
+public:
+    int doit(vector<int>& vv,int tar) // 560. Subarray Sum Equals K
+    {
+     unordered_map<int,int>mp;
+     int cur=0,ans=0;
+     for(int i=0;i<vv.size();i++)
+     {
+      cur+=vv[i];
+      if(cur==tar)
+          ans++;
+      if(mp.find(cur-tar)!=mp.end())
+          ans+=mp[cur-tar];
+      mp[cur]++;
+     }
+     return ans;
+    }
+    int numSubmatrixSumTarget(vector<vector<int>>& matrix, int target) 
+    {
+     int m=matrix.size();
+     int n=matrix[0].size();
+     int ans=0;
+     for(int j=0;j<n;j++)
+     {
+      vector<int>vv(m,0);
+      for(int i=j;i<n;i++)
+      {
+       for(int k=0;k<m;k++)
+           vv[k]+=matrix[k][i];
+       ans+=doit(vv,target);
+      }
+     }
+     return ans;
+    }
+};
+
+/// O(n * n * m):
