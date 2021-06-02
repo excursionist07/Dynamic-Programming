@@ -206,6 +206,7 @@ https://leetcode.com/problems/split-array-largest-sum/
 https://leetcode.com/problems/kth-missing-positive-number/
 https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/
 https://leetcode.com/problems/minimum-speed-to-arrive-on-time/
+https://leetcode.com/problems/minimum-limit-of-balls-in-a-bag/
 https://codeforces.com/problemset/problem/670/D1
 https://codeforces.com/problemset/problem/670/D2
 https://codeforces.com/problemset/problem/778/A
