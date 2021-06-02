@@ -296,6 +296,42 @@ public:
     }
 };
 
+// 741. Cherry Pickup
+
+const int N=52;
+int dp[N][N][N];
+
+class Solution {
+public:
+    int doit(vector<vector<int>>& grid,int n,int r1,int c1,int c2)
+    {
+     int r2=r1+c1-c2;// using Manhattan distance(r1+c1=r2+c2)
+     if(r1>=n || c1>=n || r2>=n || c2>=n || grid[r1][c1]==-1 || grid[r2][c2]==-1)
+         return INT_MIN;
+     if(dp[r1][c1][c2]!=-1)return dp[r1][c1][c2];
+     if(r1==n-1 && c1==n-1)return grid[r1][c1];
+     int ans=grid[r1][c1];
+     if(c1!=c2) // both are not at same place
+         ans+=grid[r2][c2];
+     int temp=max(doit(grid,n,r1+1,c1,c2),doit(grid,n,r1+1,c1,c2+1)); // (DD && DR);
+     temp=max(temp,doit(grid,n,r1,c1+1,c2+1)); // (RR)
+     temp=max(temp,doit(grid,n,r1,c1+1,c2));  //(RD)
+     ans+=temp;
+     return (dp[r1][c1][c2]=ans);
+    }
+    int cherryPickup(vector<vector<int>>& grid) 
+    {
+     int n=grid.size();
+     for(int i=0;i<N;i++)
+         for(int j=0;j<N;j++)
+             for(int k=0;k<N;k++)
+                 dp[i][j][k]=-1;
+     int ans=max(0,doit(grid,n,0,0,0));
+     return ans;
+
+    }
+};
+
 // Path in Matrix
 
 /*
