@@ -47,6 +47,39 @@ public:
     }
 };
 
+// 140. Word Break II
+
+class Solution {
+public:
+    void doit(string s,unordered_map<string,bool>& mp,vector<string>& ans,int idx,int n,string str)
+    {
+     if(idx==n)
+     {
+      str.pop_back(); // this is done to remove spaces at the last(' ')
+      ans.push_back(str);
+     }
+     else
+     {
+      for(int j=idx;j<n;j++)
+      {
+       string temp=s.substr(idx,j-idx+1);
+       if(mp[temp])
+           doit(s,mp,ans,j+1,n,str+temp+' ');
+      }
+     }
+     
+    }
+    vector<string> wordBreak(string s, vector<string>& wordDict) 
+    {
+     unordered_map<string,bool>mp;
+     for(int i=0;i<wordDict.size();i++)
+         mp[wordDict[i]]=1;
+     vector<string>ans;
+     doit(s,mp,ans,0,s.length(),"");
+     return ans;
+    }
+};
+
 // 1048. Longest String Chain
 
 class Solution {
