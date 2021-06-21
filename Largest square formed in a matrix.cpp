@@ -170,7 +170,7 @@ public:
 
 class Solution {
 public:
-    int doit(vector<int>& vv,int tar) // 560. Subarray Sum Equals K
+    int doit(vector<int>& vv,int tar) // 560. Subarray Sum Equals K [i.e--> // if cur sum exceeds or equal(0,5,5,5 && k==10) k value ,so we check by eliminating k from cur]
     {
      unordered_map<int,int>mp;
      int cur=0,ans=0;
