@@ -54,6 +54,91 @@ public:
     }
 };
 
+// 354. Russian Doll Envelopes
+
+/*
+You have a number of envelopes with widths and heights given as a pair of integers (w, h). One envelope can fit into another if and only if both the width and height of one 
+envelope is greater than the width and height of the other envelope.
+What is the maximum number of envelopes can you Russian doll? (put one inside other)??
+*/
+
+class Solution {
+public:
+    int maxEnvelopes(vector<vector<int>>& envelopes) 
+    {
+     int n=envelopes.size();
+     if(n<2)
+         return n;
+     vector<pair<int,int>>vv;
+     for(int i=0;i<n;i++)
+         vv.push_back({envelopes[i][0],envelopes[i][1]});
+     sort(vv.begin(),vv.end());
+     int dp[n];
+     for(int i=0;i<n;i++)
+         dp[i]=1;
+     int ans=1;
+     for(int j=1;j<n;j++)
+     {
+      for(int i=0;i<j;i++)
+      {
+       if(vv[j].first>vv[i].first && vv[j].second>vv[i].second)
+           dp[j]=max(dp[j],1+dp[i]),ans=max(ans,dp[j]);
+      }
+     }
+     return ans; // if you have to print all indexes in LIS (https://codeforces.com/problemset/problem/4/D)
+    }
+};
+
+// 2nd method-->(N*log(N))
+/*
+You can solve this problem in this way :
+
+let's suppose the values are given as...
+[2,3]
+[4,6]
+[3,7]
+[4,8]
+
+If we Sort this envelopes in a tricky way that Sort the envelopes according to width BUT when the values of height are same, we can sort it in reverse way like this :
+
+[2,3]
+[3,7]
+[4,8]
+[4,6]
+
+Now just Do LIS on the all height values, you will get the answer
+*/
+
+class Solution {
+public:
+    static bool compare(pair<int,int>&a,pair<int,int>&b) // --> static-b'coz it's not ana instance member function
+    {
+     return (a.first<b.first || (a.first==b.first && a.second>b.second));
+    }
+    int maxEnvelopes(vector<vector<int>>& envelopes) 
+    {
+     int n=envelopes.size();
+     if(n<2)
+         return n;
+     vector<pair<int,int>>vv;
+     for(int i=0;i<n;i++)
+         vv.push_back({envelopes[i][0],envelopes[i][1]});
+     sort(vv.begin(),vv.end(),compare);
+     vector<int>ans;
+     for(int i=0;i<n;i++)
+     {
+      int idx=lower_bound(ans.begin(),ans.end(),vv[i].second)-ans.begin();
+      if(idx==ans.size())
+          ans.push_back(vv[i].second);
+      else
+          ans[idx]=vv[i].second;
+     
+     }
+     return ans.size();
+     
+    }
+};
+
 
 
 // Longest Bitonic subsequence
@@ -122,6 +207,52 @@ ll dir[][2]={{0,1},{0,-1},{1,0},{-1,0}};
   }
   return 0;
  }
+
+// 1671. Minimum Number of Removals to Make Mountain Array (Like Longest Bitonic subsequence)
+
+//  // O(n*log(n))  
+class Solution {
+public:
+    int minimumMountainRemovals(vector<int>& nums)
+    {
+     int n=nums.size();
+     vector<int>dp1(n),dp2(n);
+     vector<int>ans;
+     for(int i=0;i<n;i++)
+     {
+      int idx=lower_bound(ans.begin(),ans.end(),nums[i])-ans.begin();
+      if(idx==ans.size())
+          ans.push_back(nums[i]);
+      else
+          ans[idx]=nums[i];
+      dp1[i]=1+idx;
+     }
+     ans.clear();
+     for(int i=n-1;i>=0;i--)
+     {
+      int idx=lower_bound(ans.begin(),ans.end(),nums[i])-ans.begin();
+      if(idx==ans.size())
+          ans.push_back(nums[i]);
+      else
+          ans[idx]=nums[i];
+      dp2[i]=1+idx;
+     }
+        
+     int zz=0;
+     
+     for(int i=0;i<n;i++)
+     {
+      if(dp1[i]>1 && dp2[i]>1) // This is done b'coz in array first should increase then decrese (both must happen)
+          zz=max(zz,dp1[i]+dp2[i]-1);
+     }
+     return n-zz;
+    }
+};
+
+/*
+https://leetcode.com/problems/maximum-length-of-pair-chain/
+https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/
+*/
 
 // 673. Number of Longest Increasing Subsequence
 
@@ -312,136 +443,9 @@ In this case, if we want to keep A and B increasing before the index i, can only
      return min(swap,not_swap);*/
 };
 
-// 354. Russian Doll Envelopes
 
-/*
-You have a number of envelopes with widths and heights given as a pair of integers (w, h). One envelope can fit into another if and only if both the width and height of one 
-envelope is greater than the width and height of the other envelope.
-What is the maximum number of envelopes can you Russian doll? (put one inside other)??
-*/
 
-class Solution {
-public:
-    int maxEnvelopes(vector<vector<int>>& envelopes) 
-    {
-     int n=envelopes.size();
-     if(n<2)
-         return n;
-     vector<pair<int,int>>vv;
-     for(int i=0;i<n;i++)
-         vv.push_back({envelopes[i][0],envelopes[i][1]});
-     sort(vv.begin(),vv.end());
-     int dp[n];
-     for(int i=0;i<n;i++)
-         dp[i]=1;
-     int ans=1;
-     for(int j=1;j<n;j++)
-     {
-      for(int i=0;i<j;i++)
-      {
-       if(vv[j].first>vv[i].first && vv[j].second>vv[i].second)
-           dp[j]=max(dp[j],1+dp[i]),ans=max(ans,dp[j]);
-      }
-     }
-     return ans; // if you have to print all indexes in LIS (https://codeforces.com/problemset/problem/4/D)
-    }
-};
 
-// 2nd method-->(N*log(N))
-/*
-You can solve this problem in this way :
-
-let's suppose the values are given as...
-[2,3]
-[4,6]
-[3,7]
-[4,8]
-
-If we Sort this envelopes in a tricky way that Sort the envelopes according to width BUT when the values of height are same, we can sort it in reverse way like this :
-
-[2,3]
-[3,7]
-[4,8]
-[4,6]
-
-Now just Do LIS on the all height values, you will get the answer
-*/
-
-class Solution {
-public:
-    static bool compare(pair<int,int>&a,pair<int,int>&b) // --> static-b'coz it's not ana instance member function
-    {
-     return (a.first<b.first || (a.first==b.first && a.second>b.second));
-    }
-    int maxEnvelopes(vector<vector<int>>& envelopes) 
-    {
-     int n=envelopes.size();
-     if(n<2)
-         return n;
-     vector<pair<int,int>>vv;
-     for(int i=0;i<n;i++)
-         vv.push_back({envelopes[i][0],envelopes[i][1]});
-     sort(vv.begin(),vv.end(),compare);
-     vector<int>ans;
-     for(int i=0;i<n;i++)
-     {
-      int idx=lower_bound(ans.begin(),ans.end(),vv[i].second)-ans.begin();
-      if(idx==ans.size())
-          ans.push_back(vv[i].second);
-      else
-          ans[idx]=vv[i].second;
-     
-     }
-     return ans.size();
-     
-    }
-};
-
-// 1671. Minimum Number of Removals to Make Mountain Array (Like Longest Bitonic subsequence)
-
-//  // O(n*log(n))  
-class Solution {
-public:
-    int minimumMountainRemovals(vector<int>& nums)
-    {
-     int n=nums.size();
-     vector<int>dp1(n),dp2(n);
-     vector<int>ans;
-     for(int i=0;i<n;i++)
-     {
-      int idx=lower_bound(ans.begin(),ans.end(),nums[i])-ans.begin();
-      if(idx==ans.size())
-          ans.push_back(nums[i]);
-      else
-          ans[idx]=nums[i];
-      dp1[i]=1+idx;
-     }
-     ans.clear();
-     for(int i=n-1;i>=0;i--)
-     {
-      int idx=lower_bound(ans.begin(),ans.end(),nums[i])-ans.begin();
-      if(idx==ans.size())
-          ans.push_back(nums[i]);
-      else
-          ans[idx]=nums[i];
-      dp2[i]=1+idx;
-     }
-        
-     int zz=0;
-     
-     for(int i=0;i<n;i++)
-     {
-      if(dp1[i]>1 && dp2[i]>1) // This is done b'coz in array first should increase then decrese (both must happen)
-          zz=max(zz,dp1[i]+dp2[i]-1);
-     }
-     return n-zz;
-    }
-};
-
-/*
-https://leetcode.com/problems/maximum-length-of-pair-chain/
-https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/
-*/
 
 // 665. Non-decreasing Array
 
