@@ -118,7 +118,7 @@ public:
      dp=vector<vector<int>>(m+1,vector<int>(n+1,0));
      for(int i=1;i<=m;i++)
         for(int j=1;j<=n;j++)
-           dp[i][j]=dp[i-1][j]+dp[i][j-1]-dp[i-1][j-1]+matrix[i-1][j-1];// prefix 2-D sum
+           dp[i][j]=dp[i-1][j]+dp[i][j-1]-dp[i-1][j-1]+matrix[i-1][j-1];  // prefix 2-D sum (don't confuse in (matrix[i-1][j-1]) b'coz for this question we have done this b'coz [m+1][n+1]
      }
     
     int sumRegion(int row1, int col1, int row2, int col2) 
