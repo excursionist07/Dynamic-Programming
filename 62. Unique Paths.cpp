@@ -269,6 +269,43 @@ int main()
  return 0;
 }
 
+// 778. Swim in Rising Water
+
+#define tu tuple<int,int,int>
+int dir[][2]={{0,1},{0,-1},{1,0},{-1,0}};
+class Solution {
+public:
+    int swimInWater(vector<vector<int>>& grid)
+    {
+     int n=grid.size();
+     priority_queue<tu,vector<tu>,greater<tu>>pq;
+     pq.push({grid[0][0],0,0});
+     vector<vector<bool>>vis(n,vector<bool>(n,0));
+     vis[0][0]=1;
+     int mx=INT_MIN;
+     while(!pq.empty())
+     {
+      auto [u,x,y]=pq.top();
+      pq.pop();
+      mx=max(mx,u);
+      if(x==n-1 && y==n-1)
+          return mx;
+      for(int i=0;i<4;i++)
+      {
+       int xx=x+dir[i][0];
+       int yy=y+dir[i][1];
+       if(xx>=0 && xx<n && yy>=0 && yy<n && !vis[xx][yy])
+       {
+         vis[xx][yy]=1;
+         pq.push({grid[xx][yy],xx,yy});
+       }
+      }
+     }
+     return -1;
+     
+    }
+};
+
 // 174. Dungeon Game
 
 class Solution {
