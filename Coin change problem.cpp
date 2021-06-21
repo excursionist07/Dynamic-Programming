@@ -73,6 +73,7 @@ public:
 
 // 983. Minimum Cost For Tickets
 
+// check on this --> days[]={1,4,6,7}
 class Solution {
 public:
    
