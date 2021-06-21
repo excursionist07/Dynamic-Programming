@@ -54,14 +54,7 @@ public:
     }
 };
 
-/*
-https://practice.geeksforgeeks.org/problems/longest-increasing-subsequence/0
-https://www.hackerrank.com/challenges/longest-increasing-subsequent/problem
-https://www.codechef.com/problems/PEC005
-https://www.codechef.com/problems/LISA
-https://www.hackerearth.com/problem/algorithm/longest-increasing-subsequence-2/
-https://codeforces.com/problemset/problem/1017/C
-*/
+
 
 // Longest Bitonic subsequence
 
